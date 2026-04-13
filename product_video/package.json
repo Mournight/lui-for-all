@@ -1,0 +1,27 @@
+{
+  "name": "lui-for-all-product-video",
+  "version": "2.0.0",
+  "description": "LUI-for-All 产品展示视频 - Remotion",
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion render src/index.ts MainComposition out/video.mp4",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.448",
+    "@remotion/google-fonts": "4.0.448",
+    "@remotion/paths": "4.0.448",
+    "@remotion/shapes": "4.0.448",
+    "@remotion/transitions": "4.0.448",
+    "@remotion/zod-types": "4.0.448",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "remotion": "4.0.448",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "typescript": "^5.0.0"
+  }
+}

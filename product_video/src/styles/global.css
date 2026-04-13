@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg-color-main: #ffffff;
+  --bg-color-dark: #0f0f0f;
+  --bg-color-sidebar: #f9f9f9;
+  --border-color-light: #e5e5e5;
+
+  --color-primary: #171717;
+  --color-primary-light: #f4f4f4;
+  --color-text-primary: #0f0f0f;
+  --color-text-secondary: #737373;
+  --color-accent: #00d2ff;
+
+  --font-main: "Inter", "Noto Sans SC", sans-serif;
+  --font-ui: "Outfit", "Noto Sans SC", sans-serif;
+  --font-mono: "JetBrains Mono", "Noto Sans SC", monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color-main);
+  font-family: var(--font-main);
+  color: var(--color-text-primary);
+  letter-spacing: -0.015em;
+}
+
+.title-font {
+  font-family: var(--font-ui);
+  font-weight: 700;
+}
+
+.mono-font {
+  font-family: var(--font-mono);
+}
+
+.straight-border {
+  border-radius: 0;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color-light);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
