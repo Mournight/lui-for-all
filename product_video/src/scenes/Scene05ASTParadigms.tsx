@@ -2,6 +2,7 @@ import React from 'react';
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
 import { FullSection } from '../components/Layout';
 import { Title, SubTitle, MonoText, Text, CaptionText } from '../components/Typography';
+import { VideoTextProps } from '../schemas';
 
 const PARADIGMS = [
   {
@@ -31,7 +32,7 @@ const PARADIGMS = [
 ];
 
 /* 场景 5：自动识别 6 大后端框架的路由 */
-export const Scene05ASTParadigms: React.FC = () => {
+export const Scene05ASTParadigms: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -48,9 +49,9 @@ export const Scene05ASTParadigms: React.FC = () => {
       <FullSection>
         {/* 标题 */}
         <div style={{ opacity: titleOp, marginBottom: 50 }}>
-          <Title style={{ fontSize: 72 }}>自动识别 6 大后端框架的路由</Title>
+          <Title style={{ fontSize: 72 }}>{t.s05_title}</Title>
           <SubTitle style={{ fontSize: 36, marginTop: 16 }}>
-            4 种路由范式归一化处理，无论你的后端用什么风格写，都能自动提取。
+            {t.s05_subtitle}
           </SubTitle>
         </div>
 

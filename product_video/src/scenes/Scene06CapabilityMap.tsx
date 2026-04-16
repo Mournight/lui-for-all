@@ -2,6 +2,7 @@ import React from 'react';
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
 import { FullSection } from '../components/Layout';
 import { Title, SubTitle, MonoText, Text, CaptionText } from '../components/Typography';
+import { VideoTextProps } from '../schemas';
 
 const CAPABILITIES = [
   { domain: '财务', name: '查询采购单', modality: 'data_table', safety: 'readonly_safe', safetyColor: '#22c55e', intent: '"查一下本月采购单"' },
@@ -11,7 +12,7 @@ const CAPABILITIES = [
 ];
 
 /* 场景 6：能力地图详解 */
-export const Scene06CapabilityMap: React.FC = () => {
+export const Scene06CapabilityMap: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -28,9 +29,9 @@ export const Scene06CapabilityMap: React.FC = () => {
       <FullSection>
         {/* 标题 */}
         <div style={{ opacity: titleOp, marginBottom: 40 }}>
-          <Title style={{ fontSize: 72 }}>能力地图：从代码到语义</Title>
+          <Title style={{ fontSize: 72 }}>{t.s06_title}</Title>
           <SubTitle style={{ fontSize: 36, marginTop: 16 }}>
-            每条路由自动归属领域、标记最佳组件、预标注安全等级。
+            {t.s06_subtitle}
           </SubTitle>
         </div>
 

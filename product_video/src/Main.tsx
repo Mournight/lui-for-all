@@ -19,6 +19,7 @@ import { Scene09LangGraph } from './scenes/Scene09LangGraph';
 import { Scene10AGUIObservability } from './scenes/Scene10AGUIObservability';
 import { Scene11MCPEcosystem } from './scenes/Scene11MCPEcosystem';
 import { Scene12Outro } from './scenes/Scene12Outro';
+import { VideoTextProps, defaultVideoText } from './schemas';
 
 /* 场景时长定义（30fps） */
 const SCENE_DURATIONS = {
@@ -41,13 +42,14 @@ const SCENE_DURATIONS = {
 /* 转场时长 */
 const TRANSITION_DURATION = 20;
 
-export const Main: React.FC = () => {
+export const Main: React.FC<VideoTextProps> = (props) => {
+  const t = { ...defaultVideoText, ...props };
   return (
     <AbsoluteFill style={{ backgroundColor: '#ffffff' }}>
       <TransitionSeries>
         {/* Scene 1: 痛点引入（白底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene01}>
-          <Scene01PainPoint />
+          <Scene01PainPoint t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：亮→暗，slide */}
@@ -58,7 +60,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 2: 产品亮相（黑底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene02}>
-          <Scene02ProductReveal />
+          <Scene02ProductReveal t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：暗→暗，slide */}
@@ -69,7 +71,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 2B: 工作阶段总览（黑底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene02b}>
-          <Scene02BWorkflowOverview />
+          <Scene02BWorkflowOverview t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：暗→亮，fade */}
@@ -80,7 +82,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 3: 零侵入接入（白底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene03}>
-          <Scene03ZeroIntrusion />
+          <Scene03ZeroIntrusion t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：亮→暗，wipe 强调核心创新 */}
@@ -91,7 +93,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 4: 双轨发现引擎（黑底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene04}>
-          <Scene04DualDiscovery />
+          <Scene04DualDiscovery t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：暗→暗，fade（衔接开放生态） */}
@@ -102,7 +104,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 4B: 开放生态引入（黑底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene04b}>
-          <Scene04BOpenEcosystemIntro />
+          <Scene04BOpenEcosystemIntro t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：暗→亮，fade */}
@@ -113,7 +115,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 5: 自动识别 6 大后端框架（白底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene05}>
-          <Scene05ASTParadigms />
+          <Scene05ASTParadigms t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：亮→亮，slide */}
@@ -124,7 +126,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 6: 能力地图详解（白底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene06}>
-          <Scene06CapabilityMap />
+          <Scene06CapabilityMap t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：亮→亮，slide */}
@@ -135,7 +137,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 7: 8 种 UI 组件（白底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene07}>
-          <Scene07UIBlocks />
+          <Scene07UIBlocks t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：亮→白灰，wipe 强调安全 */}
@@ -146,7 +148,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 8: 5 级安全 + 审批（白灰底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene08}>
-          <Scene08SecurityApproval />
+          <Scene08SecurityApproval t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：亮→暗，slide */}
@@ -157,7 +159,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 9: LangGraph 执行内核（黑底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene09}>
-          <Scene09LangGraph />
+          <Scene09LangGraph t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：暗→亮，fade */}
@@ -168,7 +170,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 10: AG-UI + SSE + 可观测（白底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene10}>
-          <Scene10AGUIObservability />
+          <Scene10AGUIObservability t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：亮→暗，slide */}
@@ -179,7 +181,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 11: MCP 接入详解（黑底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene11}>
-          <Scene11MCPEcosystem />
+          <Scene11MCPEcosystem t={t} />
         </TransitionSeries.Sequence>
 
         {/* 转场：暗→亮，fade */}
@@ -190,7 +192,7 @@ export const Main: React.FC = () => {
 
         {/* Scene 12: 尾声（白底） */}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.scene12}>
-          <Scene12Outro />
+          <Scene12Outro t={t} />
         </TransitionSeries.Sequence>
       </TransitionSeries>
     </AbsoluteFill>

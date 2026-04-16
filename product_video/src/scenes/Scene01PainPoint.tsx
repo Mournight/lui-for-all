@@ -2,9 +2,10 @@ import React from 'react';
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
 import { ScreenCenter } from '../components/Layout';
 import { SubTitle, Text, MonoText, CaptionText } from '../components/Typography';
+import { VideoTextProps } from '../schemas';
 
 /* 场景 1：痛点引入 —— 用户 + Agent 共同困境 */
-export const Scene01PainPoint: React.FC = () => {
+export const Scene01PainPoint: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -54,7 +55,7 @@ export const Scene01PainPoint: React.FC = () => {
               transform: `translateY(${interpolate(line1Y, [0, 1], [40, 0])}px)`,
             }}>
               <SubTitle style={{ color: '#0f0f0f', fontWeight: 700, fontSize: 56 }}>
-                企业后端系统功能完备
+                {t.s01_line1}
               </SubTitle>
             </div>
 
@@ -64,7 +65,7 @@ export const Scene01PainPoint: React.FC = () => {
               marginTop: 40,
             }}>
               <Text style={{ color: '#737373', fontSize: 36 }}>
-                但操作路径深：多级菜单、组合筛选、重复表单
+                {t.s01_line2}
               </Text>
             </div>
 
@@ -76,13 +77,13 @@ export const Scene01PainPoint: React.FC = () => {
               gap: 24,
             }}>
               <MonoText style={{ color: '#737373', border: '1px solid #e5e5e5', fontSize: 28, padding: '10px 20px' }}>
-                N 层菜单
+                {t.s01_pain1}
               </MonoText>
               <MonoText style={{ color: '#737373', border: '1px solid #e5e5e5', fontSize: 28, padding: '10px 20px' }}>
-                M 个表单
+                {t.s01_pain2}
               </MonoText>
               <MonoText style={{ color: '#737373', border: '1px solid #e5e5e5', fontSize: 28, padding: '10px 20px' }}>
-                K 次跳转
+                {t.s01_pain3}
               </MonoText>
             </div>
           </div>
@@ -102,13 +103,13 @@ export const Scene01PainPoint: React.FC = () => {
           <div style={{ textAlign: 'center', maxWidth: 1400 }}>
             <div style={{ opacity: agentLine1Op }}>
               <SubTitle style={{ color: '#0f0f0f', fontWeight: 700, fontSize: 56 }}>
-                OpenClaw 让 Agent 从对话走向执行
+                {t.s01_agentLine1}
               </SubTitle>
             </div>
 
             <div style={{ opacity: agentLine2Op, marginTop: 40 }}>
               <Text style={{ color: '#737373', fontSize: 36 }}>
-                但 Agent 只能操控浏览器和文件系统，绕不开低效的 GUI
+                {t.s01_agentLine2}
               </Text>
             </div>
 
@@ -120,13 +121,13 @@ export const Scene01PainPoint: React.FC = () => {
               gap: 24,
             }}>
               <MonoText style={{ color: '#737373', border: '1px solid #e5e5e5', fontSize: 28, padding: '10px 20px' }}>
-                模拟点击
+                {t.s01_agentPain1}
               </MonoText>
               <MonoText style={{ color: '#737373', border: '1px solid #e5e5e5', fontSize: 28, padding: '10px 20px' }}>
-                DOM 猜测
+                {t.s01_agentPain2}
               </MonoText>
               <MonoText style={{ color: '#737373', border: '1px solid #e5e5e5', fontSize: 28, padding: '10px 20px' }}>
-                不稳定
+                {t.s01_agentPain3}
               </MonoText>
             </div>
           </div>
@@ -155,7 +156,7 @@ export const Scene01PainPoint: React.FC = () => {
                 display: 'inline-block',
               }}>
                 <Text style={{ fontSize: 48, fontWeight: 700, color: '#ffffff' }}>
-                  LUI-for-All：在任何项目为用户和 Agent 打通自然语言接口
+                  {t.s01_solution}
                 </Text>
               </div>
             </div>
@@ -165,7 +166,7 @@ export const Scene01PainPoint: React.FC = () => {
               marginTop: 60,
             }}>
               <CaptionText style={{ color: '#737373', fontSize: 28 }}>
-                不是替代 GUI，而是无声地提供自然语言的另一个入口
+                {t.s01_cta}
               </CaptionText>
             </div>
           </div>

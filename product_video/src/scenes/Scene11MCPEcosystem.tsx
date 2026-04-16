@@ -2,6 +2,7 @@ import React from 'react';
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
 import { FullSection } from '../components/Layout';
 import { Title, SubTitle, MonoText, Text, CaptionText } from '../components/Typography';
+import { VideoTextProps } from '../schemas';
 
 const MCP_TOOLS = [
   { name: 'list_projects', desc: '列出已导入项目', readOnly: true },
@@ -12,7 +13,7 @@ const MCP_TOOLS = [
 ];
 
 /* 场景 11：MCP 接入详解 */
-export const Scene11MCPEcosystem: React.FC = () => {
+export const Scene11MCPEcosystem: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -44,9 +45,9 @@ export const Scene11MCPEcosystem: React.FC = () => {
     <AbsoluteFill style={{ backgroundColor: '#0f0f0f', padding: 80, color: '#ffffff' }}>
       {/* 标题 */}
       <div style={{ opacity: titleOp, marginBottom: 30 }}>
-        <Title style={{ fontSize: 64, color: '#ffffff' }}>MCP 接入：Agent 如何与 LUI-for-All 交互</Title>
+        <Title style={{ fontSize: 64, color: '#ffffff' }}>{t.s11_title}</Title>
         <SubTitle style={{ fontSize: 30, color: '#a3a3a3', marginTop: 12 }}>
-          通过标准 MCP 协议（Streamable HTTP），任何兼容 Agent 均可接入
+          {t.s11_subtitle}
         </SubTitle>
       </div>
 
@@ -186,10 +187,10 @@ export const Scene11MCPEcosystem: React.FC = () => {
         marginBottom: 24,
       }}>
         <Text style={{ fontSize: 22, fontWeight: 600, color: '#ef4444', marginBottom: 8 }}>
-          MCP 安全策略
+          {t.s11_safetyTitle}
         </Text>
         <CaptionText style={{ color: '#a3a3a3', fontSize: 16 }}>
-          hard_write / critical 操作在 MCP 模式下自动跳过，需通过内置聊天界面审批 · 需主动将安全默认动作设为 allow 方可开放全自动通道
+          {t.s11_safetyDesc}
         </CaptionText>
       </div>
 
@@ -265,7 +266,7 @@ export const Scene11MCPEcosystem: React.FC = () => {
           })}
         </div>
         <CaptionText style={{ color: '#a3a3a3', fontSize: 14, marginTop: 12 }}>
-          同一个 chat 端点 · MCP Agent 和自定义 GUI 共享能力内核 · 替换 UI 不替换逻辑
+          {t.s11_chatSummary}
         </CaptionText>
       </div>
 
@@ -278,7 +279,7 @@ export const Scene11MCPEcosystem: React.FC = () => {
         textAlign: 'center',
       }}>
         <Text style={{ fontSize: 22, fontWeight: 600, color: '#00d2ff' }}>
-          安全分级 + 人工确认 + 审计追踪 → 自动化与可控性并存
+          {t.s11_slogan}
         </Text>
       </div>
     </AbsoluteFill>

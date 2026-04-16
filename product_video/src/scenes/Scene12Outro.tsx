@@ -3,9 +3,10 @@ import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } fr
 import { ScreenCenter } from '../components/Layout';
 import { Title, SubTitle, MonoText, Text, CaptionText } from '../components/Typography';
 import { BrandLogo } from '../components/BrandLogo';
+import { VideoTextProps } from '../schemas';
 
 /* 场景 12：尾声 & CTA */
-export const Scene12Outro: React.FC = () => {
+export const Scene12Outro: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -46,35 +47,35 @@ export const Scene12Outro: React.FC = () => {
             transform: `translateY(${interpolate(titleY, [0, 1], [50, 0])}px)`,
           }}>
             <Title className="gradient-text" style={{ fontSize: 120, marginBottom: 16 }}>
-              LUI-for-All
+              {t.s12_title}
             </Title>
           </div>
 
           {/* 副标题 */}
           <div style={{ opacity: subOp }}>
             <SubTitle style={{ fontSize: 56, color: '#0f0f0f' }}>
-              自然语言驱动的后端操作层。
+              {t.s12_subtitle}
             </SubTitle>
           </div>
 
           {/* GitHub */}
           <div style={{ opacity: githubOp, marginTop: 60 }}>
             <MonoText style={{ fontSize: 36, padding: '16px 40px', background: '#171717', color: '#ffffff' }}>
-              github.com/aidea/talk-to-interface
+              {t.s12_github}
             </MonoText>
           </div>
 
           {/* License */}
           <div style={{ opacity: licenseOp, marginTop: 30 }}>
             <CaptionText style={{ fontSize: 24, color: '#737373' }}>
-              Apache License 2.0 · 欢迎 Star & 贡献
+              {t.s12_license}
             </CaptionText>
           </div>
 
           {/* Slogan */}
           <div style={{ opacity: sloganOp, marginTop: 50 }}>
             <Text style={{ fontSize: 40, fontWeight: 600, color: '#0f0f0f', fontFamily: 'var(--font-ui)' }}>
-              让语言成为界面。
+              {t.s12_slogan}
             </Text>
           </div>
         </div>

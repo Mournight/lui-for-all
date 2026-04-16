@@ -2,33 +2,34 @@ import React from 'react';
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
 import { FullSection } from '../components/Layout';
 import { Title, SubTitle, MonoText, Text, CaptionText } from '../components/Typography';
+import { VideoTextProps } from '../schemas';
 
 const STAGES = [
   {
     num: '01',
-    name: '导入项目',
-    desc: '填写后端 URL 或源码路径',
-    detail: '零侵入 · 不改一行代码',
+    name: '',  // 由 t 填充
+    desc: '',
+    detail: '',
     color: '#00d2ff',
   },
   {
     num: '02',
-    name: '自动发现',
-    desc: '扫描 API 端点，生成能力地图',
-    detail: 'OpenAPI + AST 双轨 · 自动标注安全等级',
+    name: '',
+    desc: '',
+    detail: '',
     color: '#22c55e',
   },
   {
     num: '03',
-    name: '自然语言操作',
-    desc: '对话即操作，一句话完成',
-    detail: '用户聊天 / MCP Agent / 自定义 Chat UI',
+    name: '',
+    desc: '',
+    detail: '',
     color: '#eab308',
   },
 ];
 
 /* 场景 02B：工作阶段总览 —— 三步走 */
-export const Scene02BWorkflowOverview: React.FC = () => {
+export const Scene02BWorkflowOverview: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -56,15 +57,15 @@ export const Scene02BWorkflowOverview: React.FC = () => {
       <FullSection>
         {/* 标题 */}
         <div style={{ opacity: titleOp, marginBottom: 60 }}>
-          <Title style={{ fontSize: 64, color: '#ffffff' }}>三个阶段，从导入到操作</Title>
+          <Title style={{ fontSize: 64, color: '#ffffff' }}>{t.s02b_title}</Title>
           <SubTitle style={{ fontSize: 32, color: '#a3a3a3', marginTop: 12 }}>
-            不需要写代码，不需要改后端，三步即可让任何后端系统支持自然语言交互
+            {t.s02b_subtitle}
           </SubTitle>
         </div>
 
         {/* 三个阶段 */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 32, flex: 1 }}>
-          {STAGES.map((stage, i) => {
+          {[{ ...STAGES[0], name: t.s02b_stage1Name, desc: t.s02b_stage1Desc, detail: t.s02b_stage1Detail }, { ...STAGES[1], name: t.s02b_stage2Name, desc: t.s02b_stage2Desc, detail: t.s02b_stage2Detail }, { ...STAGES[2], name: t.s02b_stage3Name, desc: t.s02b_stage3Desc, detail: t.s02b_stage3Detail }].map((stage, i) => {
             const opacity = stages[i];
             const yVal = stageYs[i];
 
@@ -132,7 +133,7 @@ export const Scene02BWorkflowOverview: React.FC = () => {
           textAlign: 'center',
         }}>
           <Text style={{ fontSize: 26, fontWeight: 600, color: '#ffffff' }}>
-            不是替代 GUI，而是无声地提供自然语言的另一个入口
+            {t.s02b_summary}
           </Text>
         </div>
       </FullSection>

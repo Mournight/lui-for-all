@@ -3,9 +3,10 @@ import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } fr
 import { SplitLayout, FullSection } from '../components/Layout';
 import { Title, SubTitle, MonoText, Text, CaptionText } from '../components/Typography';
 import { UIBlockGrid } from '../components/UIBlockCard';
+import { VideoTextProps } from '../schemas';
 
 /* 场景 7：8 种白名单 UI 组件 */
-export const Scene07UIBlocks: React.FC = () => {
+export const Scene07UIBlocks: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -23,9 +24,9 @@ export const Scene07UIBlocks: React.FC = () => {
       <FullSection>
         {/* 标题 */}
         <div style={{ opacity: titleOp, marginBottom: 40 }}>
-          <Title style={{ fontSize: 72 }}>8 种白名单 UI 组件</Title>
+          <Title style={{ fontSize: 72 }}>{t.s07_title}</Title>
           <SubTitle style={{ fontSize: 36, marginTop: 16 }}>
-            声明式白名单渲染，模型输出仅限 8 类 JSON 组件，无法注入原始 HTML/JS/CSS。
+            {t.s07_subtitle}
           </SubTitle>
         </div>
 

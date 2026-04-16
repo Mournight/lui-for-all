@@ -3,9 +3,10 @@ import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } fr
 import { FullSection } from '../components/Layout';
 import { Title, SubTitle, MonoText, Text, CaptionText } from '../components/Typography';
 import { SecurityLadder } from '../components/SecurityBadge';
+import { VideoTextProps } from '../schemas';
 
 /* 场景 8：5 级安全 + 人工审批 */
-export const Scene08SecurityApproval: React.FC = () => {
+export const Scene08SecurityApproval: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -30,9 +31,9 @@ export const Scene08SecurityApproval: React.FC = () => {
       <FullSection>
         {/* 标题 */}
         <div style={{ opacity: titleOp, marginBottom: 40 }}>
-          <Title style={{ fontSize: 72 }}>5 级安全内核与审批流</Title>
+          <Title style={{ fontSize: 72 }}>{t.s08_title}</Title>
           <SubTitle style={{ fontSize: 36, marginTop: 16 }}>
-            高危操作默认 interrupt() 拦截，约束 AI 在安全边界内执行。
+            {t.s08_subtitle}
           </SubTitle>
         </div>
 

@@ -3,9 +3,10 @@ import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig, Seq
 import { ScreenCenter } from '../components/Layout';
 import { Title, SubTitle, Text } from '../components/Typography';
 import { BrandLogo } from '../components/BrandLogo';
+import { VideoTextProps } from '../schemas';
 
 /* 场景 2：产品亮相 —— Logo + Slogan + 三大标签 */
-export const Scene02ProductReveal: React.FC = () => {
+export const Scene02ProductReveal: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -43,7 +44,7 @@ export const Scene02ProductReveal: React.FC = () => {
             transform: `translateY(${interpolate(titleY, [0, 1], [50, 0])}px)`,
           }}>
             <Title style={{ fontSize: 120, marginBottom: 20, color: '#ffffff' }}>
-              LUI-for-All
+              {t.s02_title}
             </Title>
           </div>
 
@@ -53,7 +54,7 @@ export const Scene02ProductReveal: React.FC = () => {
             transform: `translateY(${interpolate(subY, [0, 1], [40, 0])}px)`,
           }}>
             <SubTitle style={{ fontSize: 56, color: '#ffffff' }}>
-              在任何项目为用户和 Agent 打通自然语言接口
+              {t.s02_subtitle}
             </SubTitle>
           </div>
 
@@ -65,9 +66,9 @@ export const Scene02ProductReveal: React.FC = () => {
             marginTop: 60,
           }}>
             {[
-              { text: '零侵入', op: tag1Op },
-              { text: '多层安全管控', op: tag2Op },
-              { text: '企业级 AI 操作层', op: tag3Op },
+              { text: t.s02_tag1, op: tag1Op },
+              { text: t.s02_tag2, op: tag2Op },
+              { text: t.s02_tag3, op: tag3Op },
             ].map((tag, i) => (
               <div key={i} style={{
                 opacity: tag.op,

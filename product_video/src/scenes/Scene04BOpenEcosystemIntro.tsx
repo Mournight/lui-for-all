@@ -2,9 +2,10 @@ import React from 'react';
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
 import { ScreenCenter } from '../components/Layout';
 import { Title, SubTitle, MonoText, Text, CaptionText } from '../components/Typography';
+import { VideoTextProps } from '../schemas';
 
 /* 场景 04B：开放生态引入 —— OpenClaw 背景 + LUI 角色 */
-export const Scene04BOpenEcosystemIntro: React.FC = () => {
+export const Scene04BOpenEcosystemIntro: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -45,12 +46,12 @@ export const Scene04BOpenEcosystemIntro: React.FC = () => {
           <div style={{ textAlign: 'center' }}>
             <div style={{ opacity: act1TitleOp }}>
               <Title style={{ fontSize: 72, color: '#ffffff' }}>
-                2026 年初，OpenClaw 让 AI Agent 从对话走向执行
+                {t.s04b_act1Title}
               </Title>
             </div>
             <div style={{ opacity: act1SubOp, marginTop: 30 }}>
               <SubTitle style={{ fontSize: 36, color: '#a3a3a3' }}>
-                100k+ GitHub Stars · 本地运行 · 连接真实软件
+                {t.s04b_act1Sub}
               </SubTitle>
             </div>
           </div>
@@ -74,7 +75,7 @@ export const Scene04BOpenEcosystemIntro: React.FC = () => {
         {/* 问题 */}
         <div style={{ opacity: questionOp, marginBottom: 60, textAlign: 'center' }}>
           <Text style={{ fontSize: 36, color: '#a3a3a3' }}>
-            Agent 能操作浏览器和文件系统，但无法结构化地访问企业后端 API
+            {t.s04b_question}
           </Text>
         </div>
 
@@ -90,7 +91,7 @@ export const Scene04BOpenEcosystemIntro: React.FC = () => {
             alignItems: 'center',
             gap: 16,
           }}>
-            <Text style={{ fontSize: 28, fontWeight: 700, color: '#ffffff' }}>OpenClaw / Claude Desktop / 自定义 Agent</Text>
+            <Text style={{ fontSize: 28, fontWeight: 700, color: '#ffffff' }}>{t.s04b_agentLabel}</Text>
             <CaptionText style={{ color: '#a3a3a3', fontSize: 18 }}>自然语言驱动</CaptionText>
           </div>
 
@@ -110,7 +111,7 @@ export const Scene04BOpenEcosystemIntro: React.FC = () => {
             background: 'rgba(0, 210, 255, 0.1)',
           }}>
             <MonoText style={{ background: 'transparent', border: 'none', color: '#00d2ff', fontSize: 22, fontWeight: 600 }}>
-              MCP Protocol（标准协议）
+              {t.s04b_mcpLabel}
             </MonoText>
           </div>
 
@@ -130,7 +131,7 @@ export const Scene04BOpenEcosystemIntro: React.FC = () => {
             background: '#171717',
           }}>
             <Text style={{ fontSize: 36, fontWeight: 700, color: '#ffffff', fontFamily: 'var(--font-ui)' }}>
-              LUI-for-All · 后端能力接入层
+              {t.s04b_luiLabel}
             </Text>
           </div>
         </div>
@@ -142,7 +143,7 @@ export const Scene04BOpenEcosystemIntro: React.FC = () => {
           textAlign: 'center',
         }}>
           <Text style={{ fontSize: 30, fontWeight: 600, color: '#00d2ff' }}>
-            通过 MCP 协议，Agent 获得对后端能力的结构化访问
+            {t.s04b_keyText}
           </Text>
         </div>
 
@@ -153,7 +154,7 @@ export const Scene04BOpenEcosystemIntro: React.FC = () => {
           textAlign: 'center',
         }}>
           <CaptionText style={{ color: '#737373', fontSize: 20 }}>
-            后续将展开 MCP 接入方式与交互细节
+            {t.s04b_hint}
           </CaptionText>
         </div>
       </div>

@@ -3,9 +3,10 @@ import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig, Seq
 import { FullSection } from '../components/Layout';
 import { Title, SubTitle, MonoText, Text, CaptionText } from '../components/Typography';
 import { ProgressBar } from '../components/ProgressBar';
+import { VideoTextProps } from '../schemas';
 
 /* 场景 4：双轨发现引擎 —— OpenAPI + Tree-sitter AST */
-export const Scene04DualDiscovery: React.FC = () => {
+export const Scene04DualDiscovery: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -26,9 +27,9 @@ export const Scene04DualDiscovery: React.FC = () => {
     <AbsoluteFill style={{ backgroundColor: '#0f0f0f', padding: 80, color: '#ffffff' }}>
       {/* 标题 */}
       <div style={{ opacity: titleOp, marginBottom: 50 }}>
-        <Title style={{ fontSize: 72, color: '#ffffff' }}>双轨语义发现引擎</Title>
+        <Title style={{ fontSize: 72, color: '#ffffff' }}>{t.s04_title}</Title>
         <SubTitle style={{ fontSize: 36, color: '#a3a3a3', marginTop: 16 }}>
-          两种方式自动扫描你的后端，提取所有 API 端点及其语义。
+          {t.s04_subtitle}
         </SubTitle>
       </div>
 
@@ -105,7 +106,7 @@ export const Scene04DualDiscovery: React.FC = () => {
           transform: `scale(${interpolate(resultScale, [0, 1], [0.9, 1])})`,
         }}>
           <Text style={{ color: '#00d2ff', fontSize: 36, fontWeight: 700, fontFamily: 'var(--font-ui)' }}>
-            能力地图生成：每条 API 自动标注领域、安全等级、最佳交互方式
+            {t.s04_mergeResult}
           </Text>
         </div>
       </div>

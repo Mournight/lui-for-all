@@ -2,6 +2,7 @@ import React from 'react';
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig, Easing } from 'remotion';
 import { FullSection } from '../components/Layout';
 import { Title, SubTitle, MonoText, Text, CaptionText } from '../components/Typography';
+import { VideoTextProps } from '../schemas';
 
 const SSE_EVENTS = [
   { event: 'task_progress', desc: '节点进度', color: '#00d2ff' },
@@ -13,7 +14,7 @@ const SSE_EVENTS = [
 ];
 
 /* 场景 10：AG-UI + SSE + 可观测 */
-export const Scene10AGUIObservability: React.FC = () => {
+export const Scene10AGUIObservability: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -30,12 +31,12 @@ export const Scene10AGUIObservability: React.FC = () => {
       <FullSection>
         {/* 标题 */}
         <div style={{ opacity: titleOp, marginBottom: 40 }}>
-          <Title style={{ fontSize: 64 }}>AG-UI 协议 + 全链路可观测</Title>
+          <Title style={{ fontSize: 64 }}>{t.s10_title}</Title>
           <SubTitle style={{ fontSize: 32, marginTop: 12 }}>
-            实时事件流 · 思考折叠 · 统一 Trace ID
+            {t.s10_subtitle}
           </SubTitle>
           <CaptionText style={{ fontSize: 20, color: '#737373', marginTop: 8 }}>
-            当用户说「查一下本月采购单」，你能看到什么？
+            {t.s10_hint}
           </CaptionText>
         </div>
 

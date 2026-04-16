@@ -3,9 +3,10 @@ import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig, Seq
 import { FullSection } from '../components/Layout';
 import { Title, SubTitle, Text, MonoText, CaptionText } from '../components/Typography';
 import { FlowNode, FlowArrow } from '../components/FlowNode';
+import { VideoTextProps } from '../schemas';
 
 /* 场景 9：LangGraph 执行内核 —— 快速过 */
-export const Scene09LangGraph: React.FC = () => {
+export const Scene09LangGraph: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -28,9 +29,9 @@ export const Scene09LangGraph: React.FC = () => {
     <AbsoluteFill style={{ backgroundColor: '#0f0f0f', padding: 80, color: '#ffffff' }}>
       {/* 标题 */}
       <div style={{ opacity: titleOp, marginBottom: 50 }}>
-        <Title style={{ fontSize: 64, color: '#ffffff' }}>LangGraph 执行内核</Title>
+        <Title style={{ fontSize: 64, color: '#ffffff' }}>{t.s09_title}</Title>
         <SubTitle style={{ fontSize: 32, color: '#a3a3a3', marginTop: 12 }}>
-          多层编排 + ReAct 循环 + 安全裁定 + 实时推送
+          {t.s09_subtitle}
         </SubTitle>
       </div>
 

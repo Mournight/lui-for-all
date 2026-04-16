@@ -2,9 +2,10 @@ import React from 'react';
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig, Sequence } from 'remotion';
 import { FullSection } from '../components/Layout';
 import { Title, SubTitle, MonoText, Text, CaptionText } from '../components/Typography';
+import { VideoTextProps } from '../schemas';
 
 /* 场景 3：零侵入接入 —— 独立文件夹挂靠 */
-export const Scene03ZeroIntrusion: React.FC = () => {
+export const Scene03ZeroIntrusion: React.FC<{ t: VideoTextProps }> = ({ t }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -37,9 +38,9 @@ export const Scene03ZeroIntrusion: React.FC = () => {
       <FullSection>
         {/* 标题 */}
         <div style={{ opacity: titleOp, marginBottom: 60 }}>
-          <Title style={{ fontSize: 72 }}>零侵入挂靠</Title>
+          <Title style={{ fontSize: 72 }}>{t.s03_title}</Title>
           <SubTitle style={{ fontSize: 36, marginTop: 16 }}>
-            不改一行代码，以外挂文件夹形式独立运行，随时无痛废除。
+            {t.s03_subtitle}
           </SubTitle>
         </div>
 
@@ -65,8 +66,8 @@ export const Scene03ZeroIntrusion: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <Text style={{ fontWeight: 700, fontSize: 44 }}>Legacy Backend</Text>
-            <MonoText style={{ marginTop: 24, fontSize: 22, padding: '8px 16px' }}>/src/legacy-app</MonoText>
+            <Text style={{ fontWeight: 700, fontSize: 44 }}>{t.s03_leftLabel}</Text>
+            <MonoText style={{ marginTop: 24, fontSize: 22, padding: '8px 16px' }}>{t.s03_leftPath}</MonoText>
             <div style={{
               marginTop: 36,
               padding: '6px 18px',
@@ -75,7 +76,7 @@ export const Scene03ZeroIntrusion: React.FC = () => {
               fontWeight: 700,
               fontFamily: 'var(--font-ui)',
             }}>
-              0 Code Changes
+              {t.s03_leftBadge}
             </div>
           </div>
 
@@ -127,9 +128,9 @@ export const Scene03ZeroIntrusion: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <Text style={{ fontWeight: 700, fontSize: 44, color: '#171717' }}>LUI-for-All</Text>
+            <Text style={{ fontWeight: 700, fontSize: 44, color: '#171717' }}>{t.s03_rightLabel}</Text>
             <MonoText style={{ marginTop: 24, fontSize: 22, background: '#171717', color: 'white', padding: '8px 16px' }}>
-              /lui-for-all
+              {t.s03_rightPath}
             </MonoText>
             <div style={{ marginTop: 36 }}>
               <MonoText style={{ background: '#f4f4f4', fontSize: 18 }}>workspace/</MonoText>
@@ -140,13 +141,13 @@ export const Scene03ZeroIntrusion: React.FC = () => {
         {/* 底部要点 */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: 40, marginTop: 40 }}>
           <div style={{ opacity: point1Op, padding: '10px 24px', border: '1px solid #e5e5e5', fontSize: 22, fontFamily: 'var(--font-mono)' }}>
-            workspace/ 运行时隔离
+            {t.s03_point1}
           </div>
           <div style={{ opacity: point2Op, padding: '10px 24px', border: '1px solid #e5e5e5', fontSize: 22, fontFamily: 'var(--font-mono)' }}>
-            删除文件夹 = 完全移除
+            {t.s03_point2}
           </div>
           <div style={{ opacity: point3Op, padding: '10px 24px', border: '2px solid #171717', fontSize: 22, fontWeight: 700, fontFamily: 'var(--font-ui)' }}>
-            零负担尝试接入
+            {t.s03_point3}
           </div>
         </div>
 
@@ -154,17 +155,17 @@ export const Scene03ZeroIntrusion: React.FC = () => {
         <div style={{ display: 'flex', justifyContent: 'center', gap: 0, marginTop: 40 }}>
           <div style={{ opacity: step1Op, display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#171717', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, fontWeight: 700 }}>1</div>
-            <Text style={{ fontSize: 20 }}>导入项目：填写后端 URL</Text>
+            <Text style={{ fontSize: 20 }}>{t.s03_step1}</Text>
           </div>
           <div style={{ opacity: step1Op, margin: '0 16px', color: '#737373', fontSize: 20 }}>→</div>
           <div style={{ opacity: step2Op, display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#171717', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, fontWeight: 700 }}>2</div>
-            <Text style={{ fontSize: 20 }}>自动发现：扫描 API 端点</Text>
+            <Text style={{ fontSize: 20 }}>{t.s03_step2}</Text>
           </div>
           <div style={{ opacity: step2Op, margin: '0 16px', color: '#737373', fontSize: 20 }}>→</div>
           <div style={{ opacity: step3Op, display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#171717', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, fontWeight: 700 }}>3</div>
-            <Text style={{ fontSize: 20 }}>开始对话：自然语言操作</Text>
+            <Text style={{ fontSize: 20 }}>{t.s03_step3}</Text>
           </div>
         </div>
       </FullSection>
