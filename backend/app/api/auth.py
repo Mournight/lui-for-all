@@ -27,7 +27,6 @@ PASSWORD_FILE = WORKSPACE_DIR / "password.txt"
 PASSWORD_HINT_RELATIVE_PATH = "workspace/password.txt"
 
 # ── JWT 配置 ──
-JWT_SECRET = "lui-for-all-jwt-secret-2024"
 JWT_ALGORITHM = "HS256"
 JWT_EXPIRE_HOURS = 72
 
@@ -131,6 +130,15 @@ def _verify_password(password: str) -> bool:
         return False
 
 
+def _get_jwt_secret() -> str:
+    """基于当前密码文件派生 JWT 签名密钥。"""
+    if not _is_password_set():
+        raise RuntimeError("密码尚未设置，无法生成 JWT 签名密钥")
+
+    password_payload = PASSWORD_FILE.read_text(encoding="utf-8")
+    return hashlib.sha256(f"lui-jwt:{password_payload}".encode("utf-8")).hexdigest()
+
+
 def _create_jwt_token() -> str:
     """签发 JWT Token"""
     payload = {
@@ -138,14 +146,16 @@ def _create_jwt_token() -> str:
         "iat": datetime.now(UTC),
         "exp": datetime.now(UTC) + timedelta(hours=JWT_EXPIRE_HOURS),
     }
-    return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
+    return jwt.encode(payload, _get_jwt_secret(), algorithm=JWT_ALGORITHM)
 
 
 def verify_jwt_token(token: str) -> bool:
     """验证 JWT Token 有效性"""
     try:
-        jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+        jwt.decode(token, _get_jwt_secret(), algorithms=[JWT_ALGORITHM])
         return True
+    except (OSError, RuntimeError, json.JSONDecodeError):
+        return False
     except jwt.ExpiredSignatureError:
         return False
     except jwt.InvalidTokenError:
@@ -170,8 +180,8 @@ async def setup_password(payload: PasswordSetupRequest):
     if error:
         raise HTTPException(status_code=422, detail=error)
 
-    token = _create_jwt_token()
     _save_password_hash(payload.password)
+    token = _create_jwt_token()
     logger.info("✅ 首次密码设置成功，JWT 已签发")
     return PasswordSetupResponse(token=token)
 
